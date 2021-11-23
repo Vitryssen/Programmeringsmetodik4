@@ -8,7 +8,7 @@ private:
 	std::vector<Email> allEmails;
 public:
 	Mailbox(size_t size = 0);
-	int insert(const Email& mail);
+	void insert(const Email& mail);
 	std::vector<Email> getEmails() const;
 	void sortWho();
 	void sortDate();
