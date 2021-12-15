@@ -2,44 +2,29 @@
 #include <iostream>
 bool CompWhoDateSubject::operator()(const Email& left, const Email& right)
 {
-	if (left.from < right.from) return true;
-	else if (left.from > right.from) return false;
-	else {
-		if (left.date < right.date) return true;
-		else if (left.date > right.date) return false;
-		else {
-			if (left.subject < right.subject) return true;
-			else return false;
-		}
-	}
+	if (left.from != right.from)
+		return left.from < right.from;
+	if (left.date != right.date)
+		return left.date < right.date;
+	return left.subject < right.subject;
 }
 
 bool CompDateWhoSubject::operator()(const Email& left, const Email& right)
 {
-	if (left.date < right.date) return true;
-	else if (left.date > right.date) return false;
-	else {
-		if (left.from < right.from) return true;
-		else if (left.from > right.from) return false;
-		else {
-			if (left.subject < right.subject) return true;
-			else return false;
-		}
-	}
+	if (left.date != right.date)
+		return left.date < right.date;
+	if (left.from != right.from)
+		return left.from < right.from;
+	return left.subject < right.subject;
 }
 
 bool CompSubjectWhoDate::operator()(const Email& left, const Email& right)
 {
-	if (left.subject < right.subject) return true;
-	else if (left.subject > right.subject) return false;
-	else {
-		if (left.from < right.from) return true;
-		else if (left.from > right.from) return false;
-		else {
-			if (left.date < right.date) return true;
-			else return false;
-		}
-	}
+	if (left.subject != right.subject)
+		return left.subject < right.subject;
+	if (left.from != right.from)
+		return left.from < right.from;
+	return left.date < right.date;
 }
 
 Email::Email(const std::string& from, const std::string& date, const std::string& subject) : from(from), date(date), subject(subject)
